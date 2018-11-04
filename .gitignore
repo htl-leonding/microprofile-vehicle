@@ -1,3 +1,5 @@
+db/
+
 ### Intellij ###
 # User-specific stuff
 .idea/**/workspace.xml
