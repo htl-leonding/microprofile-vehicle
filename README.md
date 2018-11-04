@@ -59,7 +59,7 @@ curl  -H "Content-Type: application/json" http://localhost:8080/api/vehicle/all
 
 and / or 
 
-check the database. The tableVEH_VEHICLE should not be empty.
+check the database. The table VEH_VEHICLE should not be empty.
 
 
 ## Dependencies
