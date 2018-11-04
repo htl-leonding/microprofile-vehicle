@@ -23,7 +23,21 @@ cd db
 ### Start the application
 
 ```
-mvn thorntail:run
+mvn clean thorntail:run
+```
+
+or
+
+```
+mvn clean package
+java -jar target/vehicle-thorntail.jar
+```
+
+or
+
+```
+mvn clean package && java -jar target/vehicle-thorntail.jar
+
 ```
 
 The last line of the log should be:
@@ -31,6 +45,22 @@ The last line of the log should be:
 ```
 [org.wildfly.swarm] (main) THORN99999: Thorntail is Ready
 ```
+
+### Smoke tests
+
+```bash
+curl http://localhost:8080/api/vehicle/all
+curl -d '{"brand":"Opel","model":"Kadett","bodyStyle":"HATCHBACK"}' -H "Content-Type: application/json" -X POST http://localhost:8080/api/vehicle
+curl http://localhost:8080/api/vehicle/all
+curl http://localhost:8080/api/vehicle/1
+curl -X DELETE http://localhost:8080/api/vehicle/id/1
+curl  -H "Content-Type: application/json" http://localhost:8080/api/vehicle/all
+```
+
+and / or 
+
+check the database. The tableVEH_VEHICLE should not be empty.
+
 
 ## Dependencies
  ```

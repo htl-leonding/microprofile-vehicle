@@ -86,7 +86,20 @@ public class Vehicle {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Vehicle vehicle = (Vehicle) o;
-        return Objects.equals(id, vehicle.id);
+        if (vehicle.getId() == null && this.id != null) {
+            return false;
+        }
+        if (vehicle.getId() != null && this.id == null) {
+            return false;
+        }
+        return id.equals(vehicle.id) &&
+                brand.equals(vehicle.brand) &&
+                model.equals(vehicle.model) &&
+                bodyStyle == vehicle.bodyStyle;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, brand, model, bodyStyle);
+    }
 }
